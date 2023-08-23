@@ -3,6 +3,7 @@ package com.lunasoft.tp2lopardo;
 import android.app.Application;
 import android.content.Context;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -51,14 +52,20 @@ public class MainActivityViewModel extends AndroidViewModel {
     public void convertir(String dol, String eur, boolean esDolar) {
         double conversion = 0.92;
 
-        if (esDolar){
-            double cantidadFinal = Double.parseDouble(dol) * conversion;
-            double cf = Double.parseDouble(df.format(cantidadFinal));
-            resultLiveData.setValue(dol + " Dolares = " + cf + " Euros.");
+        if (dol.isEmpty() && eur.isEmpty()){
+            Toast.makeText(context, "Ingrese un valor primero", Toast.LENGTH_SHORT).show();
+        } else if(dol.matches("[a-zA-Z]+") || eur.matches("[a-zA-Z]+")){
+            Toast.makeText(context, "Ingrese solo números", Toast.LENGTH_SHORT).show();
         } else {
-            double cantidadFinal = Double.parseDouble(eur) / conversion;
-            double cf = Double.parseDouble(df.format(cantidadFinal));
-            resultLiveData.setValue(eur + " Euros = " + cf + " Dolares.");
+            if (esDolar){
+                double cantidadFinal = Double.parseDouble(dol) * conversion;
+                double cf = Double.parseDouble(df.format(cantidadFinal));
+                resultLiveData.setValue(dol + " Dolares = " + cf + " Euros.");
+            } else {
+                double cantidadFinal = Double.parseDouble(eur) / conversion;
+                double cf = Double.parseDouble(df.format(cantidadFinal));
+                resultLiveData.setValue(eur + " Euros = " + cf + " Dolares.");
+            }
         }
 
     }
@@ -74,8 +81,6 @@ public class MainActivityViewModel extends AndroidViewModel {
         eurosET.setValue(isChecked);
         dolaresET.setValue(!isChecked);
     }
-
-
 
 }
 

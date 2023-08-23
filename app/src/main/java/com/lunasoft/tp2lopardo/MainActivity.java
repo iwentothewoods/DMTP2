@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
         vm = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
+        //El botón de convertir empieza desactivado para que no se rompa antes de elegir opciones
+        binding.btConvertir.setEnabled(false);
+
         // Envía información de los números ingresados y el estado de los radio buttons
         binding.btConvertir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Observa el cambio en el estado de los ET desde el viewmodel, si devuelve verdadero,
-        // activa el campo para editar y elimina los campos para que no queden números viejos
+        // activa el campo para editar
         vm.getEurosET().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isEnabled) {
                 binding.etEuros.setEnabled(isEnabled);
-                binding.etDolares.setText("");
+                binding.btConvertir.setEnabled(true);
             }
         });
 
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean isEnabled) {
                 binding.etDolares.setEnabled(isEnabled);
-                binding.etEuros.setText("");
+                binding.btConvertir.setEnabled(true);
             }
         });
 
