@@ -48,18 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
         app:layout_constraintVertical_bias="0.105" />
 
-    <RadioButton
-        android:id="@+id/rbEuros"
-        android:layout_width="174dp"
-        android:layout_height="41dp"
-        android:text="Euros a Dolares"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.299"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbDolares"
-        app:layout_constraintVertical_bias="0.053" />
-
     <EditText
         android:id="@+id/etEuros"
         android:layout_width="wrap_content"
@@ -72,18 +60,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEuros"
         app:layout_constraintVertical_bias="0.051" />
-
-    <RadioButton
-        android:id="@+id/rbDolares"
-        android:layout_width="176dp"
-        android:layout_height="46dp"
-        android:text="Dolares a Euros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.302"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
 
     <TextView
         android:id="@+id/tvEuros"
@@ -120,5 +96,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.768" />
+
+    <RadioGroup
+        android:layout_width="191dp"
+        android:layout_height="97dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629">
+
+        <RadioButton
+            android:id="@+id/rbDolares"
+            android:layout_width="176dp"
+            android:layout_height="46dp"
+            android:text="Dolares a Euros" />
+
+        <RadioButton
+            android:id="@+id/rbEuros"
+            android:layout_width="174dp"
+            android:layout_height="41dp"
+            android:text="Euros a Dolares" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
